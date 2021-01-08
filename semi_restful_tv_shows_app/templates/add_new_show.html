@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Create</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <style>
+      *{
+        margin: 3px;
+      }
+
+      .header{
+        display: flex;
+        justify-content: space-between;
+      }
+      h1{
+        margin-left: 35%;
+      }
+
+      .bottom-link{
+        margin-left: 40%
+      }
+
+    </style>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  </head>
+  <body>
+    <div class="header">
+      <h1>Add A New Show</h1>
+      <a href="/shows">Go Back</a>
+    </div>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {# method should return a template containing the form for adding a new TV show #}
+
+    <div class="form-row">
+      <form action="/shows/post_new" method='post'> {# form action will redirect to a new route, and lead to a function that processes the post #}
+          {% csrf_token %}
+      <div class="col">
+          Title: <input type="text" class="form-control" name="title">
+      </div>
+      <div class="row">
+        <div class="col">
+            Network: <input type="text" class="form-control" name="network">
+        </div>
+        <div class="col">
+          Release Date: <input type="date" class="form-control" name="release_date">
+        </div>
+      </div>
+      <div class="col">
+        Description: <input type="text" class="form-control" name="description">
+      </div>
+      <input type="submit" class="btn btn-primary" value="Create New Show">
+      </form>
+      </div>
+
+  </body>
+</html>

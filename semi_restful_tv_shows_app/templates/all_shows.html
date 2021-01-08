@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Create</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  </head>
+  <body>
+
+    <div class="container">
+
+
+      <h1>All Shows</h1>
+
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Network</th>
+          <th>Release Date</th>
+          <th>Actions</th>
+        </tr>
+        {% for show in all_shows %}
+        <tr>
+          <td><a href="/shows/{{show.id}}">{{show.id}}</a></td>
+          <td>{{show.title}}</td>
+          <td>{{show.network}}</td>
+          <td>{{show.release_date}}</td>
+          <td><a href="/shows/{{show.id}}">Show</a> | <a href="/shows/{{show.id}}/edit">Edit</a> | <a href="/shows/{{show.id}}/destroy">Delete</a></td>
+        </tr>
+        {% endfor %}
+
+      </table>
+
+      {# clicking this redirects to add new show page #}
+      <a href="/shows/new">Add A New Show</a>
+
+    </div>
+
+
+
+
+  </body>
+</html>

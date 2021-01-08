@@ -1,0 +1,22 @@
+# Add 5 tv shows
+
+brooklyn_nine_nine = Show.objects.create(title="Brooklyn Nine-Nine", network="NBC", release_date="2013-09-17", description="Cool cool cool cool cool. No doubt, NINE NINE!!!")
+
+the_office = Show.objects.create(title="The Office", network="NBC", release_date="2005-03-24", description="Bears. Beets. Battlestar Galactica.")
+
+schitts_creek = Show.objects.create(title="Schitt's Creek", network="POP", release_date="2015-01-13", description="Ew Daviddddd!")
+
+game_of_thrones = Show.objects.create(title="Game Of Thrones", network="HBO", release_date="2011-04-17", description="You know nothing, Jon Snow")
+
+all_shows = Show.object.all()
+
+Update release dates:
+
+brooklyn_nine_nine = Show.objects.get(id=1)
+brooklyn_nine_nine.release_date = "2013-09-17"
+
+the_office = Show.objects.get(id=2)
+the_office.release_date = "2005-03-24"
+
+schitts_creek = Show.objects.get(id=3)
+game_of_thrones = Show.objects.get(id=4)
